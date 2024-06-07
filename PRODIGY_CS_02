@@ -1,0 +1,31 @@
+from PIL import Image
+import numpy as np
+def encrypt_image(image_path, shift_value, output_path):
+    image = Image.open(image_path)
+    image_array = np.array(image)
+    encrypted_array = (image_array + shift_value) % 256
+    encrypted_image = Image.fromarray(encrypted_array.astype('uint8'))
+    encrypted_image.save(output_path)
+    print(f"Encrypted image saved as {output_path}")
+def decrypt_image(image_path, shift_value, output_path):
+    image = Image.open(image_path)
+    image_array = np.array(image)
+    decrypted_array = (image_array - shift_value) % 256
+    decrypted_image = Image.fromarray(decrypted_array.astype('uint8'))
+    decrypted_image.save(output_path)
+    print(f"Decrypted image saved as {output_path}")
+def main():
+    operation = input("Do you want to (e)ncrypt or (d)ecrypt an image? ")
+    if operation.lower() not in ['e', 'd']:
+        print("Invalid choice!Please select 'e' to encrypt or 'd' to decrypt.")
+        return
+    image_path = input("Enter the path of the image: ")
+    shift_value = int(input("Enter the shift value: "))
+    output_path = input("Enter the output image path: ")
+    if operation.lower() == 'e':
+        encrypt_image(image_path, shift_value, output_path)
+    elif operation.lower() == 'd':
+        decrypt_image(image_path, shift_value, output_path)
+if __name__ == "__main__":
+    main()
+
