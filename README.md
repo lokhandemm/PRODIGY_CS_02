@@ -5,6 +5,6 @@ This project provides a simple way to encrypt and decrypt images using NumPy and
 ## Features 🚀
 - Encrypts an image by shifting pixel values.
 - Decrypts an encrypted image back to its original form.
-- Supports user input for selecting encryption or decryption.
+- Supports user input for selecting encryption or decryption. 
 - Works with grayscale and color images.
 
